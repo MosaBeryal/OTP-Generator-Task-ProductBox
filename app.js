@@ -18,13 +18,12 @@ app.all("*", (req, res) => {
 });
 
 // Start the server
-const db = require("./config/db");
+const db = require("./models/index");
+
 app.listen(port, async () => {
   try {
     // Initialize the database and sync models
     db.sequelize.sync({ alter: false });
-    // await db.databaseLoader();
-
     console.log("Database synchronized and server is running on port", port);
   } catch (error) {
     console.error("Error syncing the database:", error);
