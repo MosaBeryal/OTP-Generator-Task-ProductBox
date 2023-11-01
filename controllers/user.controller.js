@@ -4,6 +4,7 @@ module.exports.createUser = async (req, res) => {
   try {
     const existingUser = await User.findOne({
       where: { phone_number: req.body.phone_number },
+       
     });
 
     if (existingUser) {
